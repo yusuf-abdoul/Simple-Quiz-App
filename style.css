@@ -1,0 +1,328 @@
+/*Importing Google Fonts -Monsterrat*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", serif;
+}
+
+body {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /*100% of the viewport height*/
+    background: blueviolet;
+}
+
+:where(.config-container, .quiz_box, .info-box, .result_box) {
+    display: none;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+.config-container {
+    display: block;
+    width: 415px;
+    padding: 25px;
+    text-align: center;
+}
+
+.config-container .config-title {
+    font-size: 1.3125rem;
+}
+
+.config-container .config-option {
+    margin-top: 25px;
+}
+
+.config-option .option-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.config-option .category-options {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, lfr);
+}
+
+.config-option .question-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0 30px;
+    justify-content: center;
+}
+
+.config-option button {
+    padding: 12px;
+    font-size: 0.938rem;
+    font-weight: 500;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #9b8fff;
+    transition: 0.3s ease;
+
+}
+
+.config-option button.active {
+    color: #5145ba;
+    border-color: #5145ba;
+    background: #dfdafd;
+}
+
+.config-option button:hover,
+.quiz-content .answer-option:hover {
+    background: #dad5fd;
+}
+
+.question-options button {
+    flex: 1 1 10%;
+}
+
+.config-container .start-btn,
+.quiz-footer .next-question-btn,
+.result_box button {
+
+    padding: 10px 20px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    background: #5145BA;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.config-container .start-btn {
+    margin-top: 30px;
+}
+
+.config-container .start-btn:hover,
+.quiz-footer .next-question-btn:hover,
+.result_box button:hover {
+    background: #403795;
+}
+
+.info-box {
+    display: none;
+    width: 540px;
+    padding: 20px;
+    border: 1px solid #000;
+
+}
+
+.info-box .info_title {
+    font-size: 1.25rem;
+    height: 60px;
+    width: 100%;
+    font-weight: 600;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+}
+
+.info-box .info_list {
+    padding: 15px 35px;
+}
+
+.info-box .info_list .info {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+.info-box .info_list .info span {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.info-box .buttons {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding: 0 30px;
+    border-top: 1px solid lightgrey;
+    font-size: 1.125rem;
+}
+
+.info-box .buttons button {
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buttons button.quit-btn {
+    color: #007bff;
+}
+
+.buttons button.quit-btn:hover {
+    color: #fff;
+    background: #007bff
+}
+
+.buttons button.continue-btn:hover {
+    background: #0263ca;
+}
+
+.buttons button.continue-btn {
+    color: #fff;
+    background: #007bff
+}
+
+.quiz_box {
+    display: none;
+    width: 550px;
+    padding: 20px;
+}
+
+.quiz_box .quiz_header {
+    position: relative;
+    z-index: 99;
+    padding: 14px 25px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quiz_header .quiz_title {
+    font-size: 1.43rem;
+    font-weight: 700;
+}
+
+.quiz_header .quiz_timer {
+    display: flex;
+    width: 70px;
+    color: #fff;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    padding: 7px 9px;
+    border-radius: 6px;
+    background: #32313c;
+}
+
+.quiz_header .quiz_timer span {
+    font-size: 1.4rem;
+}
+
+.quiz_box .quiz-content {
+    padding: 20px 25px 25px;
+}
+
+.quiz-content .question-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.quiz-content .answer-options {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 20px;
+
+}
+
+.quiz-content .answer-option {
+    display: flex;
+    align-items: center;
+    padding: 13px 16px;
+    background: #f3f1ff;
+    border-radius: 6px;
+    border: 1px solid #b5acff;
+    font-weight: 500;
+    cursor: pointer;
+    justify-content: space-between;
+    transition: 0.3s ease;
+}
+
+.quiz-content .answer-option span {
+    display: block;
+    flex-shrink: 0;
+    margin: -4px -3px -4px 12px;
+}
+
+.quiz-content .answer-option.correct {
+    border-color: #b7e1c1;
+    background: #daedda;
+    color: #155724;
+}
+
+.quiz-content .answer-option.incorrect {
+    border-color: #f4bec3;
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.quiz_box .quiz-footer {
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #c6c6c6;
+}
+
+.quiz-footer .question-status {
+    font-weight: 500;
+}
+
+.quiz-footer .question-status b,
+.result_box,
+.result-message b {
+    font-weight: 600;
+}
+
+.quiz-footer .next-question-btn {
+    display: inline-flex;
+    visibility: hidden;
+    gap: 5px;
+    align-items: center;
+    padding: 9px 17px;
+}
+
+.result_box {
+    text-align: center;
+    padding: 40px;
+    width: 480px;
+}
+
+.result_box .result-img {
+    width: 120px;
+}
+
+.result_box .result-title {
+    margin-top: 30px;
+}
+
+.result_box .result-message {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.result_box button {
+    margin-top: 25px;
+    padding: 12px 20px;
+}

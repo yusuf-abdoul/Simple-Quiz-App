@@ -13,14 +13,14 @@ const QUIZ_TIME_LIMIT = 10;
 let currentTime = QUIZ_TIME_LIMIT;
 let timer = null;
 
-let quizCategory = "HTML";
+let quizCategory = "Javascript";
 let numberOfQuestions = 5;
 let currentQuestion = null;
 const questionIndexHistory = [];
 let correctAnswerCount = 0;
 
 // Display the quiz result and  hide the quiz container 
-const showQuizResult = ()  => {
+const showQuizResult = () => {
     quizContainer.style.display = "none";
     resultContainer.style.display = "block";
 
@@ -41,7 +41,7 @@ const startTimer = () => {
         currentTime--;
         timerDisplay.textContent = `${currentTime}s`;
 
-        if(currentTime <= 0) {
+        if (currentTime <= 0) {
             clearInterval(timer);
             highlightCorrectAnswer();
             nextQuestionBtn.style.visibility = "visible";
@@ -58,12 +58,12 @@ const getRandomQuestion = () => {
     const categoryQuestions = questions.find(cat => cat.category.toLowerCase() === quizCategory.toLowerCase()).questions || [];
 
     // Show the resultd if all questions have been used
-    if(questionIndexHistory.length >= Math.min(categoryQuestions.length, numberOfQuestions)){
+    if (questionIndexHistory.length >= Math.min(categoryQuestions.length, numberOfQuestions)) {
         return showQuizResult();
     }
     // Filter out already asked question from based on the selected category
     const availableQuestion = categoryQuestions.filter((_, index) => !questionIndexHistory.includes(index));
-    const randomQuestion = availableQuestion[Math.floor(Math.random() * categoryQuestions.length)];
+    const randomQuestion = availableQuestion[Math.floor(Math.random() * availableQuestion.length)];
 
     questionIndexHistory.push(categoryQuestions.indexOf(randomQuestion));
     return randomQuestion;
@@ -83,35 +83,35 @@ const handleAnswer = (option, answerIndex) => {
     clearInterval(timer);
     const isCorrect = currentQuestion.correctAnswer === answerIndex;
     option.classList.add(isCorrect ? "correct" : "incorrect");
-    !isCorrect ? highlightCorrectAnswer() : correctAnswerCount++; 
+    !isCorrect ? highlightCorrectAnswer() : correctAnswerCount++;
 
     //Insert icon based on correctness
     const iconHTML = `<span class="material-symbols-outlined">${isCorrect ? 'check_circle' : 'cancel'}</span>`;
     option.insertAdjacentHTML("beforeend", iconHTML);
 
-    
+
 
     // Disable all answer options after one option is selected
     answerOptions.querySelectorAll(".answer-option").forEach(option => option.style.pointerEvents = "none");
     nextQuestionBtn.style.visibility = "visible";
-    
+
 }
 // Render the current question and it options in the quiz
 const renderQuestion = () => {
     currentQuestion = getRandomQuestion();
-    if(!currentQuestion) return;
+    if (!currentQuestion) return;
     console.log(currentQuestion);
-    
+
     resetTimer();
     startTimer();
 
-//update the UI
+    //update the UI
     answerOptions.innerHTML = "";
     nextQuestionBtn.style.visibility = "hidden";
     document.querySelector(".question-text").textContent = currentQuestion.question;
     questionStatus.innerHTML = `<b>${questionIndexHistory.length}</b> of <b>${numberOfQuestions}</b> Questions`;
 
-// Create option <li> elements and append them and add click event Listeners
+    // Create option <li> elements and append them and add click event Listeners
     currentQuestion.options.forEach((option, index) => {
         const li = document.createElement("li");
         li.classList.add("answer-option");
